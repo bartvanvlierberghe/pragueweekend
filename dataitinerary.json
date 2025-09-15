@@ -2,46 +2,227 @@
   "days": [
     {
       "name": "donderdag 2 oktober",
+      "photos": [
+        "https://images.unsplash.com/photo-1544989164-31dc3c645987?q=80&w=1200&auto=format&fit=crop"
+      ],
       "events": [
         { "time": "17:00", "title": "Inkomhal luchthaven Charlerio", "notes": "" },
-        { "time": "19:30", "title": "Vertrek vlucht FR68", "notes": "10kg bagage in te checken\nKleine rugzak kan mee op de vlieger  https://help.ryanair.com/hc/en-gb/categories/12489112419089-Bag-Rules" },
+        { 
+          "time": "19:30", 
+          "title": "Vertrek vlucht FR68", 
+          "notes": "10kg bagage in te checken\nKleine rugzak kan mee op de vlieger  https://help.ryanair.com/hc/en-gb/categories/12489112419089-Bag-Rules"
+        },
         { "time": "21:00", "title": "Aankomst luchthaven Praag", "notes": "" },
         { "time": "", "title": "verplaatsing naar hotel met", "notes": "Prague city transfers" },
-        { "time": "", "title": "verblijf hotel gemiddeld", "notes": "Ibis Praha Old Town\nNa Poříčí 5   110 00 Praha 1 – Czech Republic" },
-        { "time": "22:00", "title": "avondactiviteit", "notes": "Nice bars/outside places for evening drink at Karlin quarter: a bit GenY/Z (hipster) style but very authentic about to the Prague young culture.\nhttps://maps.app.goo.gl/WcnyDnPsh7RpYGN79\nhttps://maps.app.goo.gl/iYT2rB89pfGyYRW9A" }
+        { 
+          "time": "", 
+          "title": "verblijf hotel gemiddeld", 
+          "notes": "Ibis Praha Old Town\nNa Poříčí 5   110 00 Praha 1 – Czech Republic",
+          "siteUrl": "https://all.accor.com/hotel/5477/index.en.shtml",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ibis%20Praha%20Old%20Town",
+          "desc": "Centraal gelegen bij Palladium/Kruittoren, praktisch voor Oude Stad en OV.",
+          "facts": [
+            "Korte wandelafstand tot Oude Stadsplein.",
+            "Goede OV‑connecties (tram/metro).",
+            "Onderdeel van Accor (ibis)."
+          ]
+        },
+        { 
+          "time": "22:00",
+          "title": "avondactiviteit",
+          "notes": "Nice bars/outside places for evening drink at Karlin quarter: a bit GenY/Z (hipster) style but very authentic about to the Prague young culture.\nhttps://maps.app.goo.gl/WcnyDnPsh7RpYGN79\nhttps://maps.app.goo.gl/iYT2rB89pfGyYRW9A",
+          "mapsUrl": "https://maps.app.goo.gl/iYT2rB89pfGyYRW9A",
+          "desc": "Avondwandeling/drankje in Karlín: levendige Gen Y/Z sfeer, terrassen en hedendaagse horeca.",
+          "facts": [
+            "Historische wijk met heropleving sinds 2010s.",
+            "Veel buurtbars en pleinen met buitenzitjes."
+          ]
+        }
       ]
     },
     {
       "name": "vrijdag 3 oktober",
+      "photos": [
+        "https://images.unsplash.com/photo-1505764706515-aa95265c5abc?q=80&w=1200&auto=format&fit=crop"
+      ],
       "events": [
         { "time": "09:00 - 09:45", "title": "op naar bij startpunt Baja Bikes", "notes": "" },
-        { "time": "10:00 - 13:00", "title": "Begeleide Fietstocht met Baja Bikes", "notes": "c" },
-        { "time": "13:00 - 14:30", "title": "eten bij U Medvidku", "notes": "Na Perštýně 7, 100 01 Prague 1" },
+        { 
+          "time": "10:00 - 13:00", 
+          "title": "Begeleide Fietstocht met Baja Bikes",
+          "notes": "c",
+          "siteUrl": "https://www.bajabikes.eu/en/highlights-in-prague-bike-tour/",
+          "desc": "3‑uur Highlights‑fietstocht met Engelstalige gids langs Old Town, Joodse wijk, Letná/Metronoom, Lennon Wall, Kampa en Karelsbrug; ontspannen tempo met fotostops.",
+          "facts": [
+            "Overzicht van iconische highlights in ~3 uur.",
+            "Lokale Engelstalige gids en fotostops.",
+            "Ideale oriëntatie bij tripstart."
+          ]
+        },
+        { 
+          "time": "13:00 - 14:30", 
+          "title": "eten bij U Medvidku",
+          "notes": "Na Perštýně 7, 100 01 Prague 1",
+          "siteUrl": "https://umedvidku.cz/en/",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=U%20Medv%C3%ADdk%C5%AF%20Prague",
+          "desc": "Historische brouwerij‑herberg met 15e‑eeuwse wortels, klassieke Tsjechische gerechten en eigen bieren.",
+          "facts": [
+            "Historie terug tot 1466.",
+            "Eigen bieren (o.a. XBEER‑33) naast Budvar.",
+            "Grote traditionele bierhal."
+          ]
+        },
         { "time": "14:30 - 15:30", "title": "verplaatsing", "notes": "" },
-        { "time": "15:30-17:00", "title": "troja kasteel bezoeken plus tuinen", "notes": "" },
+        { 
+          "time": "15:30-17:00", 
+          "title": "troja kasteel bezoeken plus tuinen",
+          "notes": "",
+          "siteUrl": "https://www.ghmp.cz/en/buildings/ghmp-zamek-troja/",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Troja%20Chateau%20Prague",
+          "desc": "Vroeg‑barokke residentie (1679–1691) met iconische tuintrap en beeldengroep.",
+          "facts": [
+            "Architect: Jean Baptiste Mathey; Italiaanse invloeden.",
+            "Tuintrap met titanen (Heermann).",
+            "Onder beheer van Prague City Gallery (GHMP)."
+          ]
+        },
         { "time": "17:30-18:30", "title": "verplaatsing", "notes": "" },
-        { "time": "19:30 - 21:00", "title": "diner", "notes": "" },
+        { 
+          "time": "19:30 - 21:00", 
+          "title": "diner",
+          "notes": "Tavern U Pavouka — Celetná 597/17, 110 00 Praha 1 | https://upavouka.com",
+          "siteUrl": "https://upavouka.com",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kr%C4%8Dma%20U%20Pavouka%20Celetn%C3%A1%20597/17%20Praha",
+          "desc": "Middeleeuwse tavernesfeer met 5‑gangen diner en ‘all you can drink’; shows met zwaardvechters, jongleurs en dans.",
+          "facts": [
+            "Dagelijkse shows met vaste tijdstippen.",
+            "Menuvarianten inclusief vegetarisch.",
+            "Gelegen aan Celetná 597/17."
+          ]
+        },
         { "time": "21:00 - 21:15", "title": "Verplaatsing", "notes": "" },
-        { "time": "21:30 - 23:00", "title": "avond activiteit", "notes": "jazz dock" }
+        { 
+          "time": "21:30 - 23:00", 
+          "title": "avond activiteit",
+          "notes": "jazz dock",
+          "siteUrl": "https://www.jazzdock.cz/en",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jazz%20Dock%20Prague",
+          "desc": "Moderne jazzclub aan de Vltava met glazen paviljoen en sterke programmering.",
+          "facts": [
+            "Adres: Janáčkovo nábřeží 2 (Smíchov).",
+            "Rivierlocatie met bar/keuken.",
+            "Dagelijks wisselend programma."
+          ]
+        }
       ]
     },
     {
       "name": "zaterdag 4 oktober",
+      "photos": [
+        "https://images.unsplash.com/photo-1568047230945-8a04e0b0aef2?q=80&w=1200&auto=format&fit=crop"
+      ],
       "events": [
         { "time": "09:00", "title": "op weg", "notes": "" },
-        { "time": "10-13 ?", "title": "Bezoek aan de Praagse Burcht (Pražský hrad)", "notes": "" },
+        { 
+          "time": "10-13 ?", 
+          "title": "Bezoek aan de Praagse Burcht (Pražský hrad)",
+          "notes": "",
+          "siteUrl": "https://www.hrad.cz/en/prague-castle-for-visitors",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Prague%20Castle",
+          "desc": "UNESCO‑site en groot kasteelcomplex met romaanse en gotische lagen sinds ca. 880.",
+          "facts": [
+            "Vaak genoemd als grootste ‘ancient castle’.",
+            "Sint‑Vituskathedraal en paleizen op het terrein.",
+            "Meerdere vaste expo’s en hofruimtes."
+          ]
+        },
         { "time": "13:30-14:00", "title": "lunch : pivovar strahov beer garden", "notes": "" },
-        { "time": "14:00-17:00", "title": "Verken de Petřín Heuvel", "notes": "" },
-        { "time": "", "title": "bezoek Strahovský klášter", "notes": "Tours" },
-        { "time": "17:30", "title": "Pilsner Urquell: The Original Beer Experience", "notes": "28. října 377/13\nPrague" },
-        { "time": "20 - 23", "title": "Medieval Dinner with Live Show & Unlimited Drinks", "notes": "Eten + drinken + show" }
+        { 
+          "time": "14:00-17:00", 
+          "title": "Verken de Petřín Heuvel",
+          "notes": "",
+          "siteUrl": "https://prague.eu/en/objevujte/petrin-funicular-lanova-draha-na-petrin/",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Petrin%20Hill%20Prague",
+          "desc": "Groene stadsheuvel met panorama’s; kabelspoor in renovatie, alternatief te voet/tram.",
+          "facts": [
+            "Funicular (1891) tijdelijk buiten dienst.",
+            "Alternatief: wandelen vanaf Újezd of Pohořelec.",
+            "Uitkijktoren en rozentuinen."
+          ]
+        },
+        { 
+          "time": "", 
+          "title": "bezoek Strahovský klášter",
+          "notes": "Tours",
+          "siteUrl": "https://www.strahovskyklaster.cz/en",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Strahov%20Monastery%20Prague",
+          "desc": "Premonstratenzerabdij (1143) met basiliek, orgeltraditie en historische bibliotheek.",
+          "facts": [
+            "Gesticht in 1143.",
+            "Relieken van St. Norbert sinds 1627.",
+            "Barokke bibliotheekzalen."
+          ]
+        },
+        { 
+          "time": "17:30", 
+          "title": "Pilsner Urquell: The Original Beer Experience",
+          "notes": "28. října 377/13\nPrague",
+          "siteUrl": "https://www.pilsnerexperience.com/en",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pilsner%20Urquell%20The%20Original%20Beer%20Experience%20Prague",
+          "desc": "Interactieve bierbeleving met multimediale zalen, tap‑demo’s en proeverij.",
+          "facts": [
+            "Meerdere verdiepingen met 360‑elementen.",
+            "Tapster Academy met tapstijlen.",
+            "Inclusief proeverij en bierhal."
+          ]
+        },
+        { 
+          "time": "20 - 23", 
+          "title": "Medieval Dinner with Live Show & Unlimited Drinks",
+          "notes": "Tavern U Pavouka — Celetná 597/17, 110 00 Praha 1 | https://booking.upavouka.com/?langid=2",
+          "siteUrl": "https://upavouka.com",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kr%C4%8Dma%20U%20Pavouka%20Celetn%C3%A1%20597/17%20Praha",
+          "desc": "Middeleeuwse show met 5‑gangen menu en ‘all you can drink’; zwaardvechters, jongleurs en dans.",
+          "facts": [
+            "Showduur ca. 2–2,5 uur.",
+            "Vegetarische en andere menu‑opties.",
+            "Locatie in de Oude Stad (Celetná)."
+          ]
+        }
       ]
     },
     {
       "name": "zondag 5 oktober",
+      "photos": [
+        "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?q=80&w=1200&auto=format&fit=crop"
+      ],
       "events": [
-        { "time": "10:00 -1200", "title": "Gegidste tour door oude stad, joodse wijke en joodse begraafplaats en 1 synagoge", "notes": "Duur +- 2u\ngidsen via guides@prague.eu\nBegraafpaats en bezoek synagoge\nTickets https://www.jewishmuseum.cz/en/e-shop-en/" },
-        { "time": "12:00-14:00", "title": "lunch", "notes": "" },
+        { 
+          "time": "10:00 -1200", 
+          "title": "Gegidste tour door oude stad, joodse wijke en joodse begraafplaats en 1 synagoge",
+          "notes": "Duur +- 2u\ngidsen via guides@prague.eu\nBegraafpaats en bezoek synagoge\nTickets https://www.jewishmuseum.cz/en/e-shop-en/",
+          "siteUrl": "https://www.jewishmuseum.cz/en/info/visit/admission/",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jewish%20Museum%20in%20Prague",
+          "desc": "Meerdere synagogen en de Oude Joodse Begraafplaats met één combiticket.",
+          "facts": [
+            "Ticket omvat o.a. Maisel-, Pinkas- en Spaanse synagoge.",
+            "Begraafplaats maakt deel uit van de route.",
+            "Verkoop sluit 30 min. voor sluiting."
+          ]
+        },
+        { 
+          "time": "12:00-14:00", 
+          "title": "lunch",
+          "notes": "Restaurant Staroměstská — Staroměstské náměstí 19, 110 00 Praha 1 | https://www.staromestskarestaurace.com/",
+          "siteUrl": "https://www.staromestskarestaurace.com/",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Starom%C4%9Bstsk%C3%A1%20Restaurace%20Starom%C4%9Bstsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2019%20Prague",
+          "desc": "Traditionele Tsjechische keuken op het Oude Stadsplein met panorama op de Astronomische Klok.",
+          "facts": [
+            "Adres: Staroměstské náměstí 19.",
+            "Dagelijks open 09:00–01:00.",
+            "Bekend om goulashsoep in broodkom en verzorgd pils."
+          ]
+        },
         { "time": "16:15", "title": "terug naar de luchthaven", "notes": "Prague city transfers" },
         { "time": "20:25", "title": "Vertrek vlucht  FR69", "notes": "" },
         { "time": "21:55", "title": "Aankomst Charlerio", "notes": "" }
@@ -49,4 +230,3 @@
     }
   ]
 }
-
