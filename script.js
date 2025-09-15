@@ -1,5 +1,4 @@
-// script.js — Maps-knop alleen bij echte Google Maps-links, speciale case 2e link op 2 okt avond, geen Maps bij 'verplaatsing', Baja Bikes-beschrijving en nieuwe foto's
-
+// script.js — mMaps-knop alleen bij echte Google Maps-links, speciale case 2e link op 2 okt avond, geen Maps bij 'verplaatsing', Baja Bikes-beschrijving en nieuwe foto's
 async function loadItinerary(){
   try {
     const res = await fetch('./data/itinerary.json', { cache: 'no-store' });
@@ -31,7 +30,7 @@ function extractGoogleMapsLinks(text=''){
   const out = [];
   let m;
   while ((m = RE_GMAP.exec(text)) !== null) {
-    out.push(m[22]);
+    out.push(m[1]);
   }
   return out;
 }
@@ -152,7 +151,7 @@ const DAY_PHOTOS = {
     "https://images.unsplash.com/photo-1568047230945-8a04e0b0aef2?q=80&w=1200&auto=format&fit=crop"
   ],
   "zondag 5 oktober": [
-    "https://images.unsplash.com/photo-1568047230945-8a04e0b0aef2?q=80&w=1200&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?q=80&w=1200&auto=format&fit=crop"
   ]
 };
 
@@ -178,15 +177,23 @@ function findEnrichment(title, notes){
 
 // Bepaal één relevante Google Maps-link volgens regels
 function resolveGoogleMapsLink(ev, dayName){
+  // Nooit voor 'verplaatsing'
   if ((ev.title||'').toLowerCase().includes('verplaatsing')) return null;
+
   const links = extractGoogleMapsLinks(ev.notes||'');
+
+  // Speciaal: donderdag 2 oktober 'avondactiviteit' -> 2e link indien aanwezig
   if ((dayName||'').toLowerCase().startsWith('donderdag 2 oktober') &&
       (ev.title||'').toLowerCase().includes('avond')) {
-    if (links.length >= 2) return links[22];
+    if (links.length >= 2) return links[1];
     if (links.length === 1) return links;
     return null;
   }
+
+  // Algemene regel: als er tenminste één Maps-link staat, gebruik de eerste
   if (links.length > 0) return links;
+
+  // Geen fallback naar zoek-URL; enkel tonen als er een echte Maps-link is
   return null;
 }
 
@@ -194,13 +201,16 @@ function resolveGoogleMapsLink(ev, dayName){
 function actionButtons(ev, dayName){
   const actions = [];
   const e = findEnrichment(ev.title||'', ev.notes||'');
+
   if(e?.siteUrl){
     actions.push(`<a class="btn accent" href="${e.siteUrl}" target="_blank" rel="noopener">Officiële site/tickets</a>`);
   }
+
   const gmap = resolveGoogleMapsLink(ev, dayName);
   if (gmap) {
     actions.push(`<a class="btn success" href="${gmap}" target="_blank" rel="noopener">Open Google Maps</a>`);
   }
+
   return `<div class="actions">${actions.join('')}</div>`;
 }
 
@@ -244,7 +254,7 @@ function renderNav(days){
   nav.innerHTML = days.map((d,i)=>{
     const id = encodeURIComponent(d.name);
     const parts = d.name.split(' ');
-    const label = parts && parts[22] ? `${parts} ${parts[22]}` : d.name;
+    const label = parts && parts[1] ? `${parts} ${parts[1]}` : d.name;
     return `<a class="day-chip ${i===0?'active':''}" href="#${id}">${label}</a>`;
   }).join('');
 
