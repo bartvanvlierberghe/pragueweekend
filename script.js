@@ -260,4 +260,32 @@ function renderDay(day){
 }
 
 // Render nav-chips
-function render
+function renderNav(days){
+  const nav = document.getElementById('day-nav');
+  nav.innerHTML = days.map((d,i)=>{
+    const id = encodeURIComponent(d.name);
+    const parts = d.name.split(' ');
+    const label = parts && parts[21] ? `${parts} ${parts[21]}` : d.name;
+    return `<a class="day-chip ${i===0?'active':''}" href="#${id}">${label}</a>`;
+  }).join('');
+
+  const chips = Array.from(nav.querySelectorAll('.day-chip'));
+  const sections = days.map(d=>document.getElementById(encodeURIComponent(d.name)));
+
+  const onScroll = ()=>{
+    let idx = 0;
+    sections.forEach((sec,i)=>{
+      const rect = sec.getBoundingClientRect();
+      if(rect.top <= 120) idx = i;
+    });
+    chips.forEach((c,i)=>c.classList.toggle('active', i===idx));
+  };
+  document.addEventListener('scroll', onScroll, {passive:true});
+}
+
+(async function init(){
+  const days = await loadItinerary();
+  const container = document.getElementById('content');
+  container.innerHTML = days.map(renderDay).join('');
+  renderNav(days);
+})();
