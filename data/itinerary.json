@@ -14,13 +14,13 @@
     {
       "name": "vrijdag 3 oktober",
       "events": [
-        { "time": "09:00 - 09:45", "title": "op naar bij startpunt Baja Bikes", "notes": "" },
+        { "time": "09:00 - 09:45", "title": "verplaatsing", "notes": "" },
         { "time": "10:00 - 13:00", "title": "Begeleide Fietstocht met Baja Bikes", "notes": "c" },
         { "time": "13:00 - 14:30", "title": "eten bij U Medvidku", "notes": "Na Perštýně 7, 100 01 Prague 1" },
         { "time": "14:30 - 15:30", "title": "verplaatsing", "notes": "" },
         { "time": "15:30-17:00", "title": "troja kasteel bezoeken plus tuinen", "notes": "" },
         { "time": "17:30-18:30", "title": "verplaatsing", "notes": "" },
-        { "time": "19:30 - 21:00", "title": "diner", "notes": "Tavern U Pavouka — Celetná 597/17, 110 00 Praha 1 | https://upavouka.com" },
+        { "time": "19:30 - 21:00", "title": "diner", "notes": "Tavern U Pavouka — Celetná 597/17, 110 00 Praha 1   https://upavouka.com" },
         { "time": "21:00 - 21:15", "title": "Verplaatsing", "notes": "" },
         { "time": "21:30 - 23:00", "title": "avond activiteit", "notes": "jazz dock" }
       ]
@@ -49,3 +49,4 @@
     }
   ]
 }
+
