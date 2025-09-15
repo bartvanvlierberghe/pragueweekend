@@ -1,4 +1,4 @@
-// script.js — Site+Maps knoppen: Maps uit notities (voorrang), anders mapsUrl uit ENRICHMENTS bij items met siteUrl; speciale case 2e link 2 okt avond; geen Maps bij 'verplaatsing'
+// script.js — ggeneriek renderen vanuit itinerary.json (alle content in JSON)
 
 async function loadItinerary(){
   try {
@@ -23,163 +23,6 @@ async function loadItinerary(){
   }
 }
 
-// Regex helpers
-const RE_GMAP = /(https?:\/\/(?:maps\.google\.[^ \n]+|maps\.app\.goo\.gl\/[^\s]+))/ig;
-
-// Linkextractie uit notes
-function extractGoogleMapsLinks(text=''){
-  const out = [];
-  let m;
-  while ((m = RE_GMAP.exec(text)) !== null) {
-    out.push(m[1]);
-  }
-  return out;
-}
-
-// Verrijkingen per locatie (regex-match op title/notes) — met siteUrl en mapsUrl waar zinvol
-const ENRICHMENTS = [
-  {
-    match: /praagse\s*burcht|pražský\s*hrad|prague\s*castle/i,
-    desc: "UNESCO‑site en een van ’s werelds grootste aaneengesloten kasteelcomplexen; oorsprong rond 880, met romaanse en gotische invloeden.",
-    facts: [
-      "Vaak genoemd als grootste ‘ancient castle’ (≈70.000 m²).",
-      "Historische lagen van 9e eeuw tot modernisering.",
-      "Sint‑Vituskathedraal en Koninklijke vertrekken op het terrein."
-    ],
-    siteUrl: "https://www.hrad.cz/en/prague-castle-for-visitors",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Prague%20Castle"
-  },
-  {
-    match: /strahov(ský)?\s*kl(a|á)šter|strahov\s*monastery/i,
-    desc: "Premonstratenzerabdij (1143) met basiliek, orgeltraditie en een beroemde historische kloosterbibliotheek.",
-    facts: [
-      "Gesticht in 1143 door Premonstratenzers.",
-      "Relieken van St. Norbert sinds 1627.",
-      "Bibliotheek met barokke zalen."
-    ],
-    siteUrl: "https://www.strahovskyklaster.cz/en",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Strahov%20Monastery%20Prague"
-  },
-  {
-    match: /petř[ií]n|petrin\s*heuvel|funicular/i,
-    desc: "Groene stadsheuvel met panorama’s; de kabelspoorweg ondergaat een meerjarige renovatie.",
-    facts: [
-      "Funicular (1891) tijdelijk buiten dienst i.v.m. renovatie.",
-      "Alternatief: wandelen vanaf Újezd of via Pohořelec/Letná.",
-      "Bekend om uitkijktoren en rozentuinen."
-    ],
-    siteUrl: "https://prague.eu/en/objevujte/petrin-funicular-lanova-draha-na-petrin/",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Petrin%20Hill%20Prague"
-  },
-  {
-    match: /troja\s*(kasteel|chateau|palace|z[aá]mek)/i,
-    desc: "Vroeg‑barokke residentie (1679–1691) van de graven van Sternberg met iconische tuintrap en beeldengroep.",
-    facts: [
-      "Architect: Jean Baptiste Mathey; Italiaanse invloeden.",
-      "Tuintrap met titanen (Heermann).",
-      "Onder beheer van Prague City Gallery (GHMP)."
-    ],
-    siteUrl: "https://www.ghmp.cz/en/buildings/ghmp-zamek-troja/",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Troja%20Chateau%20Prague"
-  },
-  {
-    match: /jazz\s*dock/i,
-    desc: "Moderne jazzclub aan de Vltava met glazen paviljoen en sterke programmering van jazz, funk en soul.",
-    facts: [
-      "Adres: Janáčkovo nábřeží 2 (Smíchov).",
-      "Rivierlocatie met bar/keuken.",
-      "Dagelijks wisselend programma."
-    ],
-    siteUrl: "https://www.jazzdock.cz/en",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Jazz%20Dock%20Prague"
-  },
-  {
-    match: /u\s*medv[ií]dk(ů|u)|u\s*medvidku/i,
-    desc: "Historische brouwerij‑herberg met 15e‑eeuwse wortels, klassieke Tsjechische gerechten en eigen bieren.",
-    facts: [
-      "Historie terug tot 1466.",
-      "Eigen bieren (o.a. XBEER‑33) naast Budvar.",
-      "Grote traditionele bierhal."
-    ],
-    siteUrl: "https://umedvidku.cz/en/",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=U%20Medv%C3%ADdk%C5%AF%20Prague"
-  },
-  {
-    match: /pilsner\s*urquell.*(experience|original)/i,
-    desc: "Interactieve bierbeleving nabij Wenceslasplein: multimedia, tap‑demo’s en proeverij.",
-    facts: [
-      "Meerdere verdiepingen met 360° elementen.",
-      "Tapster Academy met tapstijlen.",
-      "Inclusief proeverij en bierhal."
-    ],
-    siteUrl: "https://www.pilsnerexperience.com/en",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Pilsner%20Urquell%20The%20Original%20Beer%20Experience%20Prague"
-  },
-  {
-    match: /joods|jewish\s*museum|synagoge|begraafplaats/i,
-    desc: "Ticket omvat meerdere synagogen en de Oude Joodse Begraafplaats; individueel ticket doorgaans 3 dagen geldig.",
-    facts: [
-      "Omvat o.a. Maisel-, Pinkas-, Spaanse en Klausensynagoge.",
-      "Begraafplaats maakt deel uit van de route.",
-      "Ticketverkoop eindigt 30 min. voor sluiting."
-    ],
-    siteUrl: "https://www.jewishmuseum.cz/en/info/visit/admission/",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Jewish%20Museum%20in%20Prague"
-  },
-  {
-    match: /ibis\s*praha\s*old\s*town/i,
-    desc: "Centraal gelegen bij Palladium/Kruittoren, praktisch voor Oude Stad en OV.",
-    facts: [
-      "Korte wandelafstand tot Oude Stadsplein.",
-      "Goede OV‑connecties (tram/metro).",
-      "Onderdeel van Accor (ibis)."
-    ],
-    siteUrl: "https://all.accor.com/hotel/5477/index.en.shtml",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ibis%20Praha%20Old%20Town"
-  },
-  // NIEUW: Restaurant Staroměstská
-  {
-    match: /starom[eě]stsk[aá]|staromestska/i,
-    desc: "Traditionele Tsjechische keuken op het Oude Stadsplein met zicht op de Astronomische Klok; bekend om o.a. goulashsoep in broodkom en verzorgd pilsbier.",
-    facts: [
-      "Adres: Staroměstské náměstí 19 (Praha 1).",
-      "Dagelijks open 09:00–01:00.",
-      "Klassiek Tsjechisch menu en tapbier."
-    ],
-    siteUrl: "https://www.staromestskarestaurace.com/",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Starom%C4%9Bstsk%C3%A1%20Restaurace%20Starom%C4%9Bstsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2019%20Prague"
-  },
-  // NIEUW: Tavern U Pavouka (Medieval Dinner)
-  {
-    match: /pavouka|medieval.*dinner|kr[cč]ma\s*u\s*pavouka/i,
-    desc: "Middeleeuwse taverneshow met 5‑gangen diner en ‘all you can drink’; zwaardvechters, jongleurs en dans; dagelijks vaste aanvangstijden.",
-    facts: [
-      "Dagelijks shows, typisch twee tijdstippen per avond.",
-      "5‑gangen menu met vegetarische en andere opties.",
-      "Locatie: Celetná 597/17 (Old Town)."
-    ],
-    siteUrl: "https://upavouka.com",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Kr%C4%8Dma%20U%20Pavouka%20Celetn%C3%A1%20597/17%20Praha"
-  }
-];
-
-// Dag-fotogalerij (zoals eerder ingesteld)
-const DAY_PHOTOS = {
-  "donderdag 2 oktober": [
-    "https://images.unsplash.com/photo-1544989164-31dc3c645987?q=80&w=1200&auto=format&fit=crop"
-  ],
-  "vrijdag 3 oktober": [
-    "https://images.unsplash.com/photo-1505764706515-aa95265c5abc?q=80&w=1200&auto=format&fit=crop"
-  ],
-  "zaterdag 4 oktober": [
-    "https://images.unsplash.com/photo-1568047230945-8a04e0b0aef2?q=80&w=1200&auto=format&fit=crop"
-  ],
-  "zondag 5 oktober": [
-    "https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?q=80&w=1200&auto=format&fit=crop"
-  ]
-};
-
-// Maak URLs in notities klikbaar
 function linkify(text){
   if(!text) return '';
   const urlRegex = /(https?:\/\/[^\s)]+)|(www\.[^\s)]+)/g;
@@ -189,77 +32,36 @@ function linkify(text){
   });
 }
 
-// Zoek verrijking voor event
-function findEnrichment(title, notes){
-  const t = title || '';
-  const n = notes || '';
-  for(const e of ENRICHMENTS){
-    if(e.match.test(t) || e.match.test(n)) return e;
-  }
-  return null;
-}
-
-// Bepaal één relevante Google Maps-link (notities → enrichment.mapsUrl), met uitzonderingen
-function resolveGoogleMapsLink(ev, dayName){
-  if ((ev.title||'').toLowerCase().includes('verplaatsing')) return null;
-  const links = extractGoogleMapsLinks(ev.notes||'');
-
-  // Speciaal: donderdag 2 oktober 'avondactiviteit' -> 2e link indien aanwezig
-  if ((dayName||'').toLowerCase().startsWith('donderdag 2 oktober') &&
-      (ev.title||'').toLowerCase().includes('avond')) {
-    if (links.length >= 2) return links[1];
-    if (links.length === 1) return links;
-    return null;
-  }
-
-  if (links.length > 0) return links;
-  return null;
-}
-
-// Bouw actieknoppen (siteUrl en Maps-knop naast elkaar indien mogelijk)
-function actionButtons(ev, dayName){
+function actionButtons(ev){
   const actions = [];
-  const e = findEnrichment(ev.title||'', ev.notes||'');
-
-  if(e?.siteUrl){
-    actions.push(`<a class="btn accent" href="${e.siteUrl}" target="_blank" rel="noopener">Officiële site/tickets</a>`);
+  if (ev.siteUrl) {
+    actions.push(`<a class="btn accent" href="${ev.siteUrl}" target="_blank" rel="noopener">Officiële site/tickets</a>`);
   }
-
-  // Eerst notities; als niets gevonden en er is e.mapsUrl én e.siteUrl, gebruik die
-  let gmap = resolveGoogleMapsLink(ev, dayName);
-  if (!gmap && e?.siteUrl && e?.mapsUrl && !(ev.title||'').toLowerCase().includes('verplaatsing')) {
-    gmap = e.mapsUrl;
+  if (ev.mapsUrl) {
+    actions.push(`<a class="btn success" href="${ev.mapsUrl}" target="_blank" rel="noopener">Open Google Maps</a>`);
   }
-
-  if (gmap) {
-    actions.push(`<a class="btn success" href="${gmap}" target="_blank" rel="noopener">Open Google Maps</a>`);
-  }
-
-  return `<div class="actions">${actions.join('')}</div>`;
+  return actions.length ? `<div class="actions">${actions.join('')}</div>` : '';
 }
 
 function renderFacts(facts=[]){
-  if(!facts.length) return '';
+  if(!facts || !facts.length) return '';
   return `<ul class="facts">${facts.map(f=>`<li>${f}</li>`).join('')}</ul>`;
 }
 
-// Render dag-sectie met verrijkte kaarten
+function renderEvent(ev){
+  const time = ev.time ? `<div class="time">${ev.time}</div>` : '';
+  const title = `<div class="title">${ev.title || ''}</div>`;
+  const desc = ev.desc ? `<div class="desc">${ev.desc}</div>` : '';
+  const facts = ev.facts ? renderFacts(ev.facts) : '';
+  const notes = ev.notes ? `<div class="notes">${linkify(ev.notes)}</div>` : '';
+  const actions = actionButtons(ev);
+  return `<article class="card">${time}${title}${desc}${facts}${notes}${actions}</article>`;
+}
+
 function renderDay(day){
-  const events = day.events || [];
-  const cards = events.map(ev=>{
-    const enr = findEnrichment(ev.title||'', ev.notes||'');
-    const time = ev.time ? `<div class="time">${ev.time}</div>` : '';
-    const title = `<div class="title">${ev.title || ''}</div>`;
-    const desc = enr?.desc ? `<div class="desc">${enr.desc}</div>` : '';
-    const facts = enr?.facts ? renderFacts(enr.facts) : '';
-    const notes = ev.notes ? `<div class="notes">${linkify(ev.notes)}</div>` : '';
-    const actions = actionButtons(ev, day.name);
-    return `<article class="card">${time}${title}${desc}${facts}${notes}${actions}</article>`;
-  }).join('');
-
-  const gallery = (DAY_PHOTOS[day.name]||[]).map(src=>`<img src="${src}" alt="${day.name} foto"/>`).join('');
+  const cards = (day.events || []).map(renderEvent).join('');
+  const gallery = (day.photos || []).map(src=>`<img src="${src}" alt="${day.name} foto"/>`).join('');
   const galleryBlock = gallery ? `<div class="gallery">${gallery}</div>` : '';
-
   return `
     <section class="day-section" id="${encodeURIComponent(day.name)}">
       <div class="day-title">
@@ -272,16 +74,14 @@ function renderDay(day){
   `;
 }
 
-// Render nav-chips
 function renderNav(days){
   const nav = document.getElementById('day-nav');
   nav.innerHTML = days.map((d,i)=>{
     const id = encodeURIComponent(d.name);
     const parts = d.name.split(' ');
-    const label = parts && parts[1] ? `${parts} ${parts[1]}` : d.name;
+    const label = parts && parts[4] ? `${parts} ${parts[4]}` : d.name;
     return `<a class="day-chip ${i===0?'active':''}" href="#${id}">${label}</a>`;
   }).join('');
-
   const chips = Array.from(nav.querySelectorAll('.day-chip'));
   const sections = days.map(d=>document.getElementById(encodeURIComponent(d.name)));
   const onScroll = ()=>{
