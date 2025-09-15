@@ -7,14 +7,14 @@
         { "time": "19:30", "title": "Vertrek vlucht FR68", "notes": "10kg bagage in te checken\nKleine rugzak kan mee op de vlieger  https://help.ryanair.com/hc/en-gb/categories/12489112419089-Bag-Rules" },
         { "time": "21:00", "title": "Aankomst luchthaven Praag", "notes": "" },
         { "time": "", "title": "verplaatsing naar hotel met", "notes": "Prague city transfers" },
-        { "time": "", "title": "verblijf hotel gemiddeld", "notes": "Ibis Praha Old Town\nNa Poříčí 5   110 00 Praha 1 – Czech Republic" },
-        { "time": "22:00", "title": "avondactiviteit", "notes": "Nice bars/outside places for evening drink at Karlin quarter: a bit GenY/Z (hipster) style but very authentic about to the Prague young culture.\nhttps://maps.app.goo.gl/WcnyDnPsh7RpYGN79\nhttps://maps.app.goo.gl/iYT2rB89pfGyYRW9A" }
+        { "time": "", "title": "hotel", "notes": "Ibis Praha Old Town\nNa Poříčí 5   110 00 Praha 1 – Czech Republic" },
+        { "time": "22:00", "title": "avondactiviteit", "notes": "Nice bars/outside places for evening drink at Karlin quarter: a bit GenY/Z (hipster) style but very authentic about to the Prague young culture" }
       ]
     },
     {
       "name": "vrijdag 3 oktober",
       "events": [
-        { "time": "09:00 - 09:45", "title": "op naar bij startpunt Baja Bikes", "notes": "" },
+        { "time": "09:00 - 09:45", "title": "op weg", "notes": "" },
         { "time": "10:00 - 13:00", "title": "Begeleide Fietstocht met Baja Bikes", "notes": "c" },
         { "time": "13:00 - 14:30", "title": "eten bij U Medvidku", "notes": "Na Perštýně 7, 100 01 Prague 1" },
         { "time": "14:30 - 15:30", "title": "verplaatsing", "notes": "" },
@@ -49,4 +49,5 @@
     }
   ]
 }
+
 
