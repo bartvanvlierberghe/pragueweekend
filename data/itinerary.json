@@ -7,7 +7,7 @@
         { "time": "19:30", "title": "Vertrek vlucht FR68", "notes": "10kg bagage in te checken\nKleine rugzak kan mee op de vlieger  https://help.ryanair.com/hc/en-gb/categories/12489112419089-Bag-Rules" },
         { "time": "21:00", "title": "Aankomst luchthaven Praag", "notes": "" },
         { "time": "21:00", "title": "verplaatsing naar hotel met", "notes": "Prague city transfers" },
-        { "time": "22:00" "title": "hotel", "notes": "Ibis Praha Old Town\nNa Poříčí 5   110 00 Praha 1 – Czech Republic" },
+        { "time": "22:00", "title": "hotel", "notes": "Ibis Praha Old Town\nNa Poříčí 5   110 00 Praha 1 – Czech Republic" },
         { "time": "22:30", "title": "avondactiviteit", "notes": "Nice bars/outside places for evening drink at Karlin quarter: a bit GenY/Z (hipster) style but very authentic about to the Prague young culture" }
       ]
     },
@@ -49,3 +49,4 @@
     }
   ]
 }
+
