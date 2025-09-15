@@ -1,4 +1,4 @@
-// script.js — ggeneriek renderen vanuit itinerary.json (alle content in JSON)
+// script.js — generiek renderen vanuit itinerary.json (alle content in JSON)
 
 async function loadItinerary(){
   try {
@@ -79,7 +79,7 @@ function renderNav(days){
   nav.innerHTML = days.map((d,i)=>{
     const id = encodeURIComponent(d.name);
     const parts = d.name.split(' ');
-    const label = parts && parts[4] ? `${parts} ${parts[4]}` : d.name;
+    const label = parts && parts[1] ? `${parts} ${parts[1]}` : d.name;
     return `<a class="day-chip ${i===0?'active':''}" href="#${id}">${label}</a>`;
   }).join('');
   const chips = Array.from(nav.querySelectorAll('.day-chip'));
