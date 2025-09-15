@@ -6,41 +6,41 @@
         { "time": "17:00", "title": "Inkomhal luchthaven Charlerio", "notes": "" },
         { "time": "19:30", "title": "Vertrek vlucht FR68", "notes": "10kg bagage in te checken\nKleine rugzak kan mee op de vlieger  https://help.ryanair.com/hc/en-gb/categories/12489112419089-Bag-Rules" },
         { "time": "21:00", "title": "Aankomst luchthaven Praag", "notes": "" },
-        { "time": "", "title": "verplaatsing naar hotel met", "notes": "Prague city transfers" },
-        { "time": "", "title": "hotel", "notes": "Ibis Praha Old Town\nNa Poříčí 5   110 00 Praha 1 – Czech Republic" },
-        { "time": "22:00", "title": "avondactiviteit", "notes": "Nice bars/outside places for evening drink at Karlin quarter: a bit GenY/Z (hipster) style but very authentic about to the Prague young culture" }
+        { "time": "21:00", "title": "verplaatsing naar hotel met", "notes": "Prague city transfers" },
+        { "time": "22:00" "title": "hotel", "notes": "Ibis Praha Old Town\nNa Poříčí 5   110 00 Praha 1 – Czech Republic" },
+        { "time": "22:30", "title": "avondactiviteit", "notes": "Nice bars/outside places for evening drink at Karlin quarter: a bit GenY/Z (hipster) style but very authentic about to the Prague young culture" }
       ]
     },
     {
       "name": "vrijdag 3 oktober",
       "events": [
-        { "time": "09:00 - 09:45", "title": "op weg", "notes": "" },
-        { "time": "10:00 - 13:00", "title": "Begeleide Fietstocht met Baja Bikes", "notes": "c" },
-        { "time": "13:00 - 14:30", "title": "eten bij U Medvidku", "notes": "Na Perštýně 7, 100 01 Prague 1" },
-        { "time": "14:30 - 15:30", "title": "verplaatsing", "notes": "" },
+        { "time": "09:00-09:45", "title": "op weg", "notes": "" },
+        { "time": "10:00-13:00", "title": "Begeleide Fietstocht met Baja Bikes", "notes": "c" },
+        { "time": "13:00-14:30", "title": "eten bij U Medvidku", "notes": "Na Perštýně 7, 100 01 Prague 1" },
+        { "time": "14:30-15:30", "title": "verplaatsing", "notes": "" },
         { "time": "15:30-17:00", "title": "troja kasteel met zijn tuinen", "notes": "" },
         { "time": "17:30-18:30", "title": "verplaatsing", "notes": "" },
-        { "time": "19:30 - 21:00", "title": "diner", "notes": "" },
-        { "time": "21:00 - 21:15", "title": "Verplaatsing", "notes": "" },
-        { "time": "21:30 - 23:00", "title": "avond activiteit", "notes": "jazz dock" }
+        { "time": "19:30-21:00", "title": "diner", "notes": "" },
+        { "time": "21:00-21:15", "title": "Verplaatsing", "notes": "" },
+        { "time": "21:30-23:00", "title": "avond activiteit", "notes": "jazz dock" }
       ]
     },
     {
       "name": "zaterdag 4 oktober",
       "events": [
         { "time": "09:00", "title": "op weg", "notes": "" },
-        { "time": "10-13 ?", "title": "Bezoek aan de Praagse Burcht (Pražský hrad)", "notes": "" },
+        { "time": "10:00-13:00", "title": "Bezoek aan de Praagse Burcht (Pražský hrad)", "notes": "" },
         { "time": "13:30-14:00", "title": "lunch : pivovar strahov beer garden", "notes": "" },
         { "time": "14:00-17:00", "title": "Verken de Petřín Heuvel", "notes": "" },
-        { "time": "", "title": "bezoek Strahovský klášter", "notes": "Tours" },
-        { "time": "17:30", "title": "Pilsner Urquell: The Original Beer Experience", "notes": "28. října 377/13\nPrague" },
-        { "time": "20 - 23", "title": "Medieval Dinner with Live Show & Unlimited Drinks", "notes": "Eten + drinken + show" }
+        { "time": "17:00-17:30", "title": "bezoek Strahovský klášter", "notes": "Tours" },
+        { "time": "17:30-19:00", "title": "Pilsner Urquell: The Original Beer Experience", "notes": "28. října 377/13\nPrague" },
+        { "time": "20:00-23:00", "title": "Medieval Dinner with Live Show & Unlimited Drinks", "notes": "Eten + drinken + show" }
       ]
     },
     {
       "name": "zondag 5 oktober",
       "events": [
-        { "time": "10:00 -1200", "title": "Gegidste tour door oude stad, joodse wijke en joodse begraafplaats en 1 synagoge", "notes": "Duur +- 2u\ngidsen via guides@prague.eu\nBegraafpaats en bezoek synagoge\nTickets https://www.jewishmuseum.cz/en/e-shop-en/" },
+        { "time": "10:00-12:00", "title": "Gegidste tour door oude stad, joodse wijke en joodse begraafplaats en 1 synagoge", "notes": "Duur +- 2u\ngidsen via guides@prague.eu\nBegraafpaats en bezoek synagoge\nTickets https://www.jewishmuseum.cz/en/e-shop-en/" },
         { "time": "12:00-14:00", "title": "lunch", "notes": "" },
         { "time": "16:15", "title": "terug naar de luchthaven", "notes": "Prague city transfers" },
         { "time": "20:25", "title": "Vertrek vlucht  FR69", "notes": "" },
@@ -49,6 +49,3 @@
     }
   ]
 }
-
-
-
