@@ -1,4 +1,4 @@
-// script.js — Site+Maps knoppen: Maps uit notities (voorrang), anders mapsUrl uit ENRICHMENTS wanneer siteUrl bestaat; speciale case 2e link 2 okt avond; geen Maps bij 'verplaatsing'
+// script.js — Site+Maps knoppen: Maps uit notities (voorrang), anders mapsUrl uit ENRICHMENTS bij items met siteUrl; speciale case 2e link 2 okt avond; geen Maps bij 'verplaatsing'
 
 async function loadItinerary(){
   try {
@@ -31,13 +31,12 @@ function extractGoogleMapsLinks(text=''){
   const out = [];
   let m;
   while ((m = RE_GMAP.exec(text)) !== null) {
-    out.push(m[20]);
+    out.push(m[1]);
   }
   return out;
 }
 
-// Verrijkingen per locatie (regex-match op title/notes)
-// mapsUrl toegevoegd voor bekende locaties (Google Maps 'search' schema aanbevolen)
+// Verrijkingen per locatie (regex-match op title/notes) — met siteUrl en mapsUrl waar zinvol
 const ENRICHMENTS = [
   {
     match: /praagse\s*burcht|pražský\s*hrad|prague\s*castle/i,
@@ -138,20 +137,33 @@ const ENRICHMENTS = [
     siteUrl: "https://all.accor.com/hotel/5477/index.en.shtml",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ibis%20Praha%20Old%20Town"
   },
+  // NIEUW: Restaurant Staroměstská
   {
-    match: /baja\s*bikes|fietstocht.*baja/i,
-    desc: "3‑uur Highlights‑fietstocht met Engelstalige lokale gids langs o.a. Oude Stadsplein, Joodse wijk, Letná/Metronoom, Lennon Wall, Kampa en Karelsbrug; ontspannen tempo met fotostops.",
+    match: /starom[eě]stsk[aá]|staromestska/i,
+    desc: "Traditionele Tsjechische keuken op het Oude Stadsplein met zicht op de Astronomische Klok; bekend om o.a. goulashsoep in broodkom en verzorgd pilsbier.",
     facts: [
-      "Snel overzicht van iconische highlights in ~3 uur.",
-      "Lokale Engelstalige gids, stops voor uitleg en foto’s.",
-      "Ideaal aan begin van het weekend voor oriëntatie."
+      "Adres: Staroměstské náměstí 19 (Praha 1).",
+      "Dagelijks open 09:00–01:00.",
+      "Klassiek Tsjechisch menu en tapbier."
     ],
-    siteUrl: "https://www.bajabikes.eu/en/highlights-in-prague-bike-tour/"
-    // geen mapsUrl: startlocatie varieert per aanbieder/taal; notities hebben voorrang
+    siteUrl: "https://www.staromestskarestaurace.com/",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Starom%C4%9Bstsk%C3%A1%20Restaurace%20Starom%C4%9Bstsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2019%20Prague"
+  },
+  // NIEUW: Tavern U Pavouka (Medieval Dinner)
+  {
+    match: /pavouka|medieval.*dinner|kr[cč]ma\s*u\s*pavouka/i,
+    desc: "Middeleeuwse taverneshow met 5‑gangen diner en ‘all you can drink’; zwaardvechters, jongleurs en dans; dagelijks vaste aanvangstijden.",
+    facts: [
+      "Dagelijks shows, typisch twee tijdstippen per avond.",
+      "5‑gangen menu met vegetarische en andere opties.",
+      "Locatie: Celetná 597/17 (Old Town)."
+    ],
+    siteUrl: "https://upavouka.com",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Kr%C4%8Dma%20U%20Pavouka%20Celetn%C3%A1%20597/17%20Praha"
   }
 ];
 
-// Dag-fotogalerij (wijzigingen zoals eerder afgesproken)
+// Dag-fotogalerij (zoals eerder ingesteld)
 const DAY_PHOTOS = {
   "donderdag 2 oktober": [
     "https://images.unsplash.com/photo-1544989164-31dc3c645987?q=80&w=1200&auto=format&fit=crop"
@@ -187,25 +199,20 @@ function findEnrichment(title, notes){
   return null;
 }
 
-// Bepaal één relevante Google Maps-link volgens regels
+// Bepaal één relevante Google Maps-link (notities → enrichment.mapsUrl), met uitzonderingen
 function resolveGoogleMapsLink(ev, dayName){
-  // Nooit voor 'verplaatsing'
   if ((ev.title||'').toLowerCase().includes('verplaatsing')) return null;
-
   const links = extractGoogleMapsLinks(ev.notes||'');
 
   // Speciaal: donderdag 2 oktober 'avondactiviteit' -> 2e link indien aanwezig
   if ((dayName||'').toLowerCase().startsWith('donderdag 2 oktober') &&
       (ev.title||'').toLowerCase().includes('avond')) {
-    if (links.length >= 2) return links[20];
+    if (links.length >= 2) return links[1];
     if (links.length === 1) return links;
     return null;
   }
 
-  // Algemene regel: als er tenminste één Maps-link staat, gebruik de eerste
   if (links.length > 0) return links;
-
-  // Geen fallback naar generieke zoek-URL
   return null;
 }
 
@@ -218,7 +225,7 @@ function actionButtons(ev, dayName){
     actions.push(`<a class="btn accent" href="${e.siteUrl}" target="_blank" rel="noopener">Officiële site/tickets</a>`);
   }
 
-  // Eerst proberen uit notities (incl. speciale case); als niet gevonden en er is een e.mapsUrl én e.siteUrl, gebruik die
+  // Eerst notities; als niets gevonden en er is e.mapsUrl én e.siteUrl, gebruik die
   let gmap = resolveGoogleMapsLink(ev, dayName);
   if (!gmap && e?.siteUrl && e?.mapsUrl && !(ev.title||'').toLowerCase().includes('verplaatsing')) {
     gmap = e.mapsUrl;
@@ -271,7 +278,7 @@ function renderNav(days){
   nav.innerHTML = days.map((d,i)=>{
     const id = encodeURIComponent(d.name);
     const parts = d.name.split(' ');
-    const label = parts && parts[20] ? `${parts} ${parts[20]}` : d.name;
+    const label = parts && parts[1] ? `${parts} ${parts[1]}` : d.name;
     return `<a class="day-chip ${i===0?'active':''}" href="#${id}">${label}</a>`;
   }).join('');
 
