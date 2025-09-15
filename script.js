@@ -1,4 +1,5 @@
-// script.js — mMaps-knop alleen bij echte Google Maps-links, speciale case 2e link op 2 okt avond, geen Maps bij 'verplaatsing', Baja Bikes-beschrijving en nieuwe foto's
+// script.js — Site+Maps knoppen: Maps uit notities (voorrang), anders mapsUrl uit ENRICHMENTS wanneer siteUrl bestaat; speciale case 2e link 2 okt avond; geen Maps bij 'verplaatsing'
+
 async function loadItinerary(){
   try {
     const res = await fetch('./data/itinerary.json', { cache: 'no-store' });
@@ -30,12 +31,13 @@ function extractGoogleMapsLinks(text=''){
   const out = [];
   let m;
   while ((m = RE_GMAP.exec(text)) !== null) {
-    out.push(m[1]);
+    out.push(m[20]);
   }
   return out;
 }
 
 // Verrijkingen per locatie (regex-match op title/notes)
+// mapsUrl toegevoegd voor bekende locaties (Google Maps 'search' schema aanbevolen)
 const ENRICHMENTS = [
   {
     match: /praagse\s*burcht|pražský\s*hrad|prague\s*castle/i,
@@ -45,7 +47,8 @@ const ENRICHMENTS = [
       "Historische lagen van 9e eeuw tot modernisering.",
       "Sint‑Vituskathedraal en Koninklijke vertrekken op het terrein."
     ],
-    siteUrl: "https://www.hrad.cz/en/prague-castle-for-visitors"
+    siteUrl: "https://www.hrad.cz/en/prague-castle-for-visitors",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Prague%20Castle"
   },
   {
     match: /strahov(ský)?\s*kl(a|á)šter|strahov\s*monastery/i,
@@ -55,7 +58,8 @@ const ENRICHMENTS = [
       "Relieken van St. Norbert sinds 1627.",
       "Bibliotheek met barokke zalen."
     ],
-    siteUrl: "https://www.strahovskyklaster.cz/en"
+    siteUrl: "https://www.strahovskyklaster.cz/en",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Strahov%20Monastery%20Prague"
   },
   {
     match: /petř[ií]n|petrin\s*heuvel|funicular/i,
@@ -65,7 +69,8 @@ const ENRICHMENTS = [
       "Alternatief: wandelen vanaf Újezd of via Pohořelec/Letná.",
       "Bekend om uitkijktoren en rozentuinen."
     ],
-    siteUrl: "https://prague.eu/en/objevujte/petrin-funicular-lanova-draha-na-petrin/"
+    siteUrl: "https://prague.eu/en/objevujte/petrin-funicular-lanova-draha-na-petrin/",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Petrin%20Hill%20Prague"
   },
   {
     match: /troja\s*(kasteel|chateau|palace|z[aá]mek)/i,
@@ -75,7 +80,8 @@ const ENRICHMENTS = [
       "Tuintrap met titanen (Heermann).",
       "Onder beheer van Prague City Gallery (GHMP)."
     ],
-    siteUrl: "https://www.ghmp.cz/en/buildings/ghmp-zamek-troja/"
+    siteUrl: "https://www.ghmp.cz/en/buildings/ghmp-zamek-troja/",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Troja%20Chateau%20Prague"
   },
   {
     match: /jazz\s*dock/i,
@@ -85,7 +91,8 @@ const ENRICHMENTS = [
       "Rivierlocatie met bar/keuken.",
       "Dagelijks wisselend programma."
     ],
-    siteUrl: "https://www.jazzdock.cz/en"
+    siteUrl: "https://www.jazzdock.cz/en",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Jazz%20Dock%20Prague"
   },
   {
     match: /u\s*medv[ií]dk(ů|u)|u\s*medvidku/i,
@@ -95,7 +102,8 @@ const ENRICHMENTS = [
       "Eigen bieren (o.a. XBEER‑33) naast Budvar.",
       "Grote traditionele bierhal."
     ],
-    siteUrl: "https://umedvidku.cz/en/"
+    siteUrl: "https://umedvidku.cz/en/",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=U%20Medv%C3%ADdk%C5%AF%20Prague"
   },
   {
     match: /pilsner\s*urquell.*(experience|original)/i,
@@ -105,7 +113,8 @@ const ENRICHMENTS = [
       "Tapster Academy met tapstijlen.",
       "Inclusief proeverij en bierhal."
     ],
-    siteUrl: "https://www.pilsnerexperience.com/en"
+    siteUrl: "https://www.pilsnerexperience.com/en",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Pilsner%20Urquell%20The%20Original%20Beer%20Experience%20Prague"
   },
   {
     match: /joods|jewish\s*museum|synagoge|begraafplaats/i,
@@ -115,7 +124,8 @@ const ENRICHMENTS = [
       "Begraafplaats maakt deel uit van de route.",
       "Ticketverkoop eindigt 30 min. voor sluiting."
     ],
-    siteUrl: "https://www.jewishmuseum.cz/en/info/visit/admission/"
+    siteUrl: "https://www.jewishmuseum.cz/en/info/visit/admission/",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Jewish%20Museum%20in%20Prague"
   },
   {
     match: /ibis\s*praha\s*old\s*town/i,
@@ -125,7 +135,8 @@ const ENRICHMENTS = [
       "Goede OV‑connecties (tram/metro).",
       "Onderdeel van Accor (ibis)."
     ],
-    siteUrl: "https://all.accor.com/hotel/5477/index.en.shtml"
+    siteUrl: "https://all.accor.com/hotel/5477/index.en.shtml",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ibis%20Praha%20Old%20Town"
   },
   {
     match: /baja\s*bikes|fietstocht.*baja/i,
@@ -136,10 +147,11 @@ const ENRICHMENTS = [
       "Ideaal aan begin van het weekend voor oriëntatie."
     ],
     siteUrl: "https://www.bajabikes.eu/en/highlights-in-prague-bike-tour/"
+    // geen mapsUrl: startlocatie varieert per aanbieder/taal; notities hebben voorrang
   }
 ];
 
-// Dag-fotogalerij: vervang vrijdag & zaterdag door alternatieven
+// Dag-fotogalerij (wijzigingen zoals eerder afgesproken)
 const DAY_PHOTOS = {
   "donderdag 2 oktober": [
     "https://images.unsplash.com/photo-1544989164-31dc3c645987?q=80&w=1200&auto=format&fit=crop"
@@ -185,7 +197,7 @@ function resolveGoogleMapsLink(ev, dayName){
   // Speciaal: donderdag 2 oktober 'avondactiviteit' -> 2e link indien aanwezig
   if ((dayName||'').toLowerCase().startsWith('donderdag 2 oktober') &&
       (ev.title||'').toLowerCase().includes('avond')) {
-    if (links.length >= 2) return links[1];
+    if (links.length >= 2) return links[20];
     if (links.length === 1) return links;
     return null;
   }
@@ -193,11 +205,11 @@ function resolveGoogleMapsLink(ev, dayName){
   // Algemene regel: als er tenminste één Maps-link staat, gebruik de eerste
   if (links.length > 0) return links;
 
-  // Geen fallback naar zoek-URL; enkel tonen als er een echte Maps-link is
+  // Geen fallback naar generieke zoek-URL
   return null;
 }
 
-// Bouw actieknoppen
+// Bouw actieknoppen (siteUrl en Maps-knop naast elkaar indien mogelijk)
 function actionButtons(ev, dayName){
   const actions = [];
   const e = findEnrichment(ev.title||'', ev.notes||'');
@@ -206,7 +218,12 @@ function actionButtons(ev, dayName){
     actions.push(`<a class="btn accent" href="${e.siteUrl}" target="_blank" rel="noopener">Officiële site/tickets</a>`);
   }
 
-  const gmap = resolveGoogleMapsLink(ev, dayName);
+  // Eerst proberen uit notities (incl. speciale case); als niet gevonden en er is een e.mapsUrl én e.siteUrl, gebruik die
+  let gmap = resolveGoogleMapsLink(ev, dayName);
+  if (!gmap && e?.siteUrl && e?.mapsUrl && !(ev.title||'').toLowerCase().includes('verplaatsing')) {
+    gmap = e.mapsUrl;
+  }
+
   if (gmap) {
     actions.push(`<a class="btn success" href="${gmap}" target="_blank" rel="noopener">Open Google Maps</a>`);
   }
@@ -254,7 +271,7 @@ function renderNav(days){
   nav.innerHTML = days.map((d,i)=>{
     const id = encodeURIComponent(d.name);
     const parts = d.name.split(' ');
-    const label = parts && parts[1] ? `${parts} ${parts[1]}` : d.name;
+    const label = parts && parts[20] ? `${parts} ${parts[20]}` : d.name;
     return `<a class="day-chip ${i===0?'active':''}" href="#${id}">${label}</a>`;
   }).join('');
 
