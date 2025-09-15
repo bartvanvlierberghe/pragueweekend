@@ -31,14 +31,13 @@ function extractGoogleMapsLinks(text=''){
   const out = [];
   let m;
   while ((m = RE_GMAP.exec(text)) !== null) {
-    out.push(m[21]);
+    out.push(m[22]);
   }
   return out;
 }
 
 // Verrijkingen per locatie (regex-match op title/notes)
 const ENRICHMENTS = [
-  // Praagse Burcht
   {
     match: /praagse\s*burcht|pražský\s*hrad|prague\s*castle/i,
     desc: "UNESCO‑site en een van ’s werelds grootste aaneengesloten kasteelcomplexen; oorsprong rond 880, met romaanse en gotische invloeden.",
@@ -49,10 +48,9 @@ const ENRICHMENTS = [
     ],
     siteUrl: "https://www.hrad.cz/en/prague-castle-for-visitors"
   },
-  // Strahov
   {
     match: /strahov(ský)?\s*kl(a|á)šter|strahov\s*monastery/i,
-    desc: "Premonstratenzerabdij (1143) met basiliek, orgeltraditie en een beroemde historische bibliotheek.",
+    desc: "Premonstratenzerabdij (1143) met basiliek, orgeltraditie en een beroemde historische kloosterbibliotheek.",
     facts: [
       "Gesticht in 1143 door Premonstratenzers.",
       "Relieken van St. Norbert sinds 1627.",
@@ -60,7 +58,6 @@ const ENRICHMENTS = [
     ],
     siteUrl: "https://www.strahovskyklaster.cz/en"
   },
-  // Petřín
   {
     match: /petř[ií]n|petrin\s*heuvel|funicular/i,
     desc: "Groene stadsheuvel met panorama’s; de kabelspoorweg ondergaat een meerjarige renovatie.",
@@ -71,7 +68,6 @@ const ENRICHMENTS = [
     ],
     siteUrl: "https://prague.eu/en/objevujte/petrin-funicular-lanova-draha-na-petrin/"
   },
-  // Troja
   {
     match: /troja\s*(kasteel|chateau|palace|z[aá]mek)/i,
     desc: "Vroeg‑barokke residentie (1679–1691) van de graven van Sternberg met iconische tuintrap en beeldengroep.",
@@ -82,7 +78,6 @@ const ENRICHMENTS = [
     ],
     siteUrl: "https://www.ghmp.cz/en/buildings/ghmp-zamek-troja/"
   },
-  // Jazz Dock
   {
     match: /jazz\s*dock/i,
     desc: "Moderne jazzclub aan de Vltava met glazen paviljoen en sterke programmering van jazz, funk en soul.",
@@ -93,7 +88,6 @@ const ENRICHMENTS = [
     ],
     siteUrl: "https://www.jazzdock.cz/en"
   },
-  // U Medvídků
   {
     match: /u\s*medv[ií]dk(ů|u)|u\s*medvidku/i,
     desc: "Historische brouwerij‑herberg met 15e‑eeuwse wortels, klassieke Tsjechische gerechten en eigen bieren.",
@@ -104,7 +98,6 @@ const ENRICHMENTS = [
     ],
     siteUrl: "https://umedvidku.cz/en/"
   },
-  // Pilsner Urquell: The Original Beer Experience
   {
     match: /pilsner\s*urquell.*(experience|original)/i,
     desc: "Interactieve bierbeleving nabij Wenceslasplein: multimedia, tap‑demo’s en proeverij.",
@@ -115,7 +108,6 @@ const ENRICHMENTS = [
     ],
     siteUrl: "https://www.pilsnerexperience.com/en"
   },
-  // Joods Museum
   {
     match: /joods|jewish\s*museum|synagoge|begraafplaats/i,
     desc: "Ticket omvat meerdere synagogen en de Oude Joodse Begraafplaats; individueel ticket doorgaans 3 dagen geldig.",
@@ -126,7 +118,6 @@ const ENRICHMENTS = [
     ],
     siteUrl: "https://www.jewishmuseum.cz/en/info/visit/admission/"
   },
-  // Ibis Praha Old Town
   {
     match: /ibis\s*praha\s*old\s*town/i,
     desc: "Centraal gelegen bij Palladium/Kruittoren, praktisch voor Oude Stad en OV.",
@@ -137,7 +128,6 @@ const ENRICHMENTS = [
     ],
     siteUrl: "https://all.accor.com/hotel/5477/index.en.shtml"
   },
-  // Baja Bikes (10:00–13:00)
   {
     match: /baja\s*bikes|fietstocht.*baja/i,
     desc: "3‑uur Highlights‑fietstocht met Engelstalige lokale gids langs o.a. Oude Stadsplein, Joodse wijk, Letná/Metronoom, Lennon Wall, Kampa en Karelsbrug; ontspannen tempo met fotostops.",
@@ -188,23 +178,15 @@ function findEnrichment(title, notes){
 
 // Bepaal één relevante Google Maps-link volgens regels
 function resolveGoogleMapsLink(ev, dayName){
-  // Nooit voor 'verplaatsing'
   if ((ev.title||'').toLowerCase().includes('verplaatsing')) return null;
-
   const links = extractGoogleMapsLinks(ev.notes||'');
-
-  // Speciaal: donderdag 2 oktober 'avondactiviteit' -> 2e link indien aanwezig
   if ((dayName||'').toLowerCase().startsWith('donderdag 2 oktober') &&
       (ev.title||'').toLowerCase().includes('avond')) {
-    if (links.length >= 2) return links[21];
+    if (links.length >= 2) return links[22];
     if (links.length === 1) return links;
     return null;
   }
-
-  // Algemene regel: als er tenminste één Maps-link staat, gebruik de eerste
   if (links.length > 0) return links;
-
-  // Geen fallback naar zoek-URL; enkel tonen als er een echte Maps-link is
   return null;
 }
 
@@ -212,16 +194,13 @@ function resolveGoogleMapsLink(ev, dayName){
 function actionButtons(ev, dayName){
   const actions = [];
   const e = findEnrichment(ev.title||'', ev.notes||'');
-
   if(e?.siteUrl){
     actions.push(`<a class="btn accent" href="${e.siteUrl}" target="_blank" rel="noopener">Officiële site/tickets</a>`);
   }
-
   const gmap = resolveGoogleMapsLink(ev, dayName);
   if (gmap) {
     actions.push(`<a class="btn success" href="${gmap}" target="_blank" rel="noopener">Open Google Maps</a>`);
   }
-
   return `<div class="actions">${actions.join('')}</div>`;
 }
 
@@ -265,13 +244,12 @@ function renderNav(days){
   nav.innerHTML = days.map((d,i)=>{
     const id = encodeURIComponent(d.name);
     const parts = d.name.split(' ');
-    const label = parts && parts[21] ? `${parts} ${parts[21]}` : d.name;
+    const label = parts && parts[22] ? `${parts} ${parts[22]}` : d.name;
     return `<a class="day-chip ${i===0?'active':''}" href="#${id}">${label}</a>`;
   }).join('');
 
   const chips = Array.from(nav.querySelectorAll('.day-chip'));
   const sections = days.map(d=>document.getElementById(encodeURIComponent(d.name)));
-
   const onScroll = ()=>{
     let idx = 0;
     sections.forEach((sec,i)=>{
