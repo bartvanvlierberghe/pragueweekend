@@ -16,7 +16,7 @@
         { "time": "21:00", "title": "verplaatsing naar hotel met", "notes": "Prague city transfers" },
         { 
           "time": "22:00", 
-          "title": "verblijf hotel gemiddeld", 
+          "title": "aankomst IBIS hotel", 
           "notes": "Ibis Praha Old Town\nNa Poříčí 5   110 00 Praha 1 – Czech Republic",
           "desc": "Centraal gelegen bij Palladium/Kruittoren, praktisch voor Oude Stad en OV.",
           "facts": [
@@ -30,12 +30,13 @@
         { 
           "time": "22:00",
           "title": "avondactiviteit",
-          "notes": "Nice bars/outside places for evening drink at Karlin quarter: a bit GenY/Z (hipster) style but very authentic about to the Prague young culture.\nhttps://maps.app.goo.gl/WcnyDnPsh7RpYGN79\nhttps://maps.app.goo.gl/iYT2rB89pfGyYRW9A",
+          "notes": "Nice bars/outside places for evening drink at Karlin quarter: a bit GenY/Z (hipster) style but very authentic about to the Prague young culture.",
           "desc": "Avondwandeling/drankje in Karlín: levendige Gen Y/Z sfeer, terrassen en hedendaagse horeca.",
           "facts": [
             "Historische wijk met heropleving sinds 2010s.",
             "Veel buurtbars en pleinen met buitenzitjes."
           ],
+         "siteUrl": "https://kasarnakarlin.cz/",
           "mapsUrl": "https://maps.app.goo.gl/iYT2rB89pfGyYRW9A"
         }
       ]
@@ -230,3 +231,4 @@
     }
   ]
 }
+
