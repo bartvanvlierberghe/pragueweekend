@@ -8,11 +8,11 @@
       "events": [
         { "time": "17:00", "title": "Inkomhal luchthaven Charlerio", "notes": "" },
         { 
-          "time": "19:30", 
+          "time": "19:30-21:00", 
           "title": "Vertrek vlucht FR68", 
-          "notes": "10kg bagage in te checken\nKleine rugzak kan mee op de vlieger  https://help.ryanair.com/hc/en-gb/categories/12489112419089-Bag-Rules"
+          "notes": "10kg bagage in te checken\nKleine rugzak kan mee op de vlieger",
+          "siteUrl": "https://help.ryanair.com/hc/en-gb/categories/12489112419089-Bag-Rules"
         },
-        { "time": "21:00", "title": "Aankomst luchthaven Praag", "notes": "" },
         { "time": "21:00", "title": "verplaatsing naar hotel met", "notes": "Prague city transfers" },
         { 
           "time": "22:00", 
@@ -30,7 +30,7 @@
         { 
           "time": "22:00",
           "title": "avondactiviteit",
-          "notes": "Nice bars/outside places for evening drink at Karlin quarter: a bit GenY/Z (hipster) style but very authentic about to the Prague young culture.",
+          "notes": "Leuke bars/terrasjes voor een avondje drinken in de Karlinwijk: een beetje in de stijl van de GenY/Z (hipsters), maar wel heel authentiek wat betreft de jonge Praagse cultuur.",
           "desc": "Avondwandeling/drankje in Karlín: levendige Gen Y/Z sfeer, terrassen en hedendaagse horeca.",
           "facts": [
             "Historische wijk met heropleving sinds 2010s.",
@@ -51,12 +51,12 @@
         { 
           "time": "10:00 - 13:00", 
           "title": "Begeleide Fietstocht met Baja Bikes", 
-          "notes": "c",
+          "notes": "",
           "desc": "3‑uur Highlights‑fietstocht met Engelstalige gids langs Old Town, Joodse wijk, Letná/Metronoom, Lennon Wall, Kampa en Karelsbrug; ontspannen tempo met fotostops.",
           "facts": [
             "Overzicht van iconische highlights in ~3 uur.",
-            "Lokale Engelstalige gids en fotostops.",
-            "Ideale oriëntatie bij tripstart."
+            "Lokale nederlandstalige gids",
+            "Ideale oriëntatie bij de start van een citytrip."
           ],
           "siteUrl": "https://www.bajabikes.eu/en/highlights-in-prague-bike-tour/"
         },
@@ -73,7 +73,6 @@
           "siteUrl": "https://umedvidku.cz/en/",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=U%20Medv%C3%ADdk%C5%AF%20Prague"
         },
-        { "time": "14:30 - 15:30", "title": "verplaatsing", "notes": "" },
         { 
           "time": "15:30-17:00", 
           "title": "troja kasteel bezoeken plus tuinen", 
@@ -87,7 +86,6 @@
           "siteUrl": "https://www.ghmp.cz/en/buildings/ghmp-zamek-troja/",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Troja%20Chateau%20Prague"
         },
-        { "time": "17:30-18:30", "title": "verplaatsing", "notes": "" },
         { 
           "time": "19:30 - 21:00", 
           "title": "diner", 
@@ -101,7 +99,6 @@
           "siteUrl": "https://upavouka.com",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kr%C4%8Dma%20U%20Pavouka%20Celetn%C3%A1%20597/17%20Praha"
         },
-        { "time": "21:00 - 21:15", "title": "Verplaatsing", "notes": "" },
         { 
           "time": "21:30 - 23:00", 
           "title": "avond activiteit", 
@@ -123,7 +120,7 @@
         "https://images.unsplash.com/photo-1568047230945-8a04e0b0aef2?q=80&w=1200&auto=format&fit=crop"
       ],
       "events": [
-        { "time": "09:00", "title": "op weg", "notes": "" },
+        { "time": "09:00", "title": "klaar om te vertrekken ", "notes": "" },
         { 
           "time": "10-13 ?", 
           "title": "Bezoek aan de Praagse Burcht (Pražský hrad)", 
@@ -137,22 +134,12 @@
           "siteUrl": "https://www.hrad.cz/en/prague-castle-for-visitors",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Prague%20Castle"
         },
-        { "time": "13:30-14:00", "title": "lunch : pivovar strahov beer garden", "notes": "" },
+        { "time": "13:30-15:00", 
+          "title": "lunch at lore malastrana",
+          "mapsUrl": "https://maps.app.goo.gl/WMSiqqCmgVxaRxR68"
+          "notes": "" },
         { 
-          "time": "14:00-17:00", 
-          "title": "Verken de Petřín Heuvel", 
-          "notes": "",
-          "desc": "Groene stadsheuvel met panorama's; kabelspoor in renovatie, alternatief te voet/tram.",
-          "facts": [
-            "Funicular (1891) tijdelijk buiten dienst.",
-            "Alternatief: wandelen vanaf Újezd of Pohořelec.",
-            "Uitkijktoren en rozentuinen."
-          ],
-          "siteUrl": "https://prague.eu/en/objevujte/petrin-funicular-lanova-draha-na-petrin/",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Petrin%20Hill%20Prague"
-        },
-        { 
-          "time": "", 
+          "time": "15:00-16:00", 
           "title": "bezoek Strahovský klášter", 
           "notes": "Tours",
           "desc": "Premonstratenzerabdij (1143) met basiliek, orgeltraditie en historische bibliotheek.",
@@ -165,7 +152,20 @@
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Strahov%20Monastery%20Prague"
         },
         { 
-          "time": "17:30", 
+          "time": "16:00-16:30", 
+          "title": "effe genieten van het uitzicht van Petřín Heuvel", 
+          "notes": "",
+          "desc": "Groene stadsheuvel met panorama's; kabelspoor in renovatie, alternatief te voet/tram.",
+          "facts": [
+            "Funicular (1891) tijdelijk buiten dienst.",
+            "Alternatief: wandelen vanaf Újezd of Pohořelec.",
+            "Uitkijktoren en rozentuinen."
+          ],
+          "siteUrl": "https://prague.eu/en/objevujte/petrin-funicular-lanova-draha-na-petrin/",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Petrin%20Hill%20Prague"
+        },
+        { 
+          "time": "17:30-19:30", 
           "title": "Pilsner Urquell: The Original Beer Experience", 
           "notes": "28. října 377/13\nPrague",
           "desc": "Interactieve bierbeleving met multimediale zalen, tap‑demo's en proeverij.",
@@ -178,13 +178,12 @@
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pilsner%20Urquell%20The%20Original%20Beer%20Experience%20Prague"
         },
         { 
-          "time": "20 - 23", 
+          "time": "20:00-23:00", 
           "title": "Medieval Dinner with Live Show & Unlimited Drinks", 
           "notes": "Tavern U Pavouka — Celetná 597/17, 110 00 Praha 1 | https://booking.upavouka.com/?langid=2",
           "desc": "Middeleeuwse show met 5‑gangen menu en 'all you can drink'; zwaardvechters, jongleurs en dans.",
           "facts": [
             "Showduur ca. 2–2,5 uur.",
-            "Vegetarische en andere menu‑opties.",
             "Locatie in de Oude Stad (Celetná)."
           ],
           "siteUrl": "https://upavouka.com",
@@ -224,11 +223,16 @@
           "siteUrl": "https://www.staromestskarestaurace.com/",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Starom%C4%9Bstsk%C3%A1%20Restaurace%20Starom%C4%9Bstsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2019%20Prague"
         },
-        { "time": "16:15", "title": "terug naar de luchthaven", "notes": "Prague city transfers" },
+         { 
+          "time": "14:00-16:00", 
+          "title": "free time " 
+          },
+        { "time": "16:15", "title": "terug naar de luchthaven vanaf het hotel ", "notes": "Prague city transfers" },
         { "time": "20:25", "title": "Vertrek vlucht  FR69", "notes": "" },
         { "time": "21:55", "title": "Aankomst Charlerio", "notes": "" }
       ]
     }
   ]
 }
+
 
