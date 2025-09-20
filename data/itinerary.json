@@ -75,7 +75,7 @@
         },
         { 
           "time": "15:30-17:00", 
-          "title": "troja kasteel bezoeken plus tuinen", 
+          "title": "troja kasteel bezoeken", 
           "notes": "",
           "desc": "Vroeg‑barokke residentie (1679–1691) met iconische tuintrap en beeldengroep.",
           "facts": [
@@ -141,7 +141,7 @@
         { 
           "time": "15:00-16:00", 
           "title": "bezoek Strahovský klášter", 
-          "notes": "Tours",
+          "notes": "",
           "desc": "Premonstratenzerabdij (1143) met basiliek, orgeltraditie en historische bibliotheek.",
           "facts": [
             "Gesticht in 1143.",
@@ -234,6 +234,7 @@
     }
   ]
 }
+
 
 
 
