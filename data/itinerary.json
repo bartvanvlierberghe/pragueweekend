@@ -136,7 +136,7 @@
         },
         { "time": "13:30-15:00", 
           "title": "lunch at lore malastrana",
-          "mapsUrl": "https://maps.app.goo.gl/WMSiqqCmgVxaRxR68"
+          "mapsUrl": "https://maps.app.goo.gl/WMSiqqCmgVxaRxR68",
           "notes": "" },
         { 
           "time": "15:00-16:00", 
@@ -234,5 +234,6 @@
     }
   ]
 }
+
 
 
